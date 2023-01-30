@@ -1,0 +1,33 @@
+.addTaskText{
+    color: #747474;
+    margin-left: 1rem;
+}
+.plus-red{
+  color: #c64645;
+  height: 20px;
+}
+.add-task-collapsed-main:hover > .plus-red{
+    color: white;
+    background-color: #c64645;
+    border-radius: 50%
+}
+.add-task-collapsed-main:hover > .addTaskText{
+    color: #c64645;
+}
+.addingTaskExpandedMain{
+  border: 1px solid #9d9d9d;
+  padding: 1rem;
+  border-radius: 5px;
+  background-color : #1f1f1f; 
+
+}
+.add-task-input{
+  width: 100%;
+  background-color : #1f1f1f; 
+  border: none;
+  height: 1.5rem;
+  border-radius: 5px;
+  color: white;
+  font-size: 1rem;
+  margin: .25rem 0;
+}
