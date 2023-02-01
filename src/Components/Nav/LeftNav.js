@@ -1,26 +1,25 @@
 import '../../App.css';
-import PContext from "../../Contexts/ProjectsContext";
+import ProjectsContext from "../../Contexts/ProjectsContext";
 import AddProjectModal from '../AddProjectModal';
 import Project from "../Project";
 import { useContext,useState } from 'react';
 
 function LeftNav() {
-  const ProjectContext = useContext(PContext);
+  const PContext = useContext(ProjectsContext);
   const [isAddModalOpen, setAddModalOpen] = useState(false);
   const addProjectModal = (event) => {
     event.preventDefault();
   }
 
   function handleProjectClick(project){
-    console.log('this is hitting')
-    ProjectContext.setSelectedProject(project);
+    PContext.setSelectedProject(project);
   }
 
   return (
     <div className='left-nav'>
         <div className='projects-parent-div'>
             <span className='projects-label'>Favorites</span>
-            {ProjectContext.projects.map((project, index) => {
+            {PContext.projects.map((project, index) => {
             if (project.favorite) {
               return <Project key={index} project={project} handleProjectClick={() => handleProjectClick(project)}></Project>
             }
@@ -34,9 +33,9 @@ function LeftNav() {
               </a>
             </div>
             
-            {ProjectContext.projects.map((project, index) => {
+            {PContext.projects.map((project, index) => {
             if (!project.favorite) {
-              return <Project key={index} project={project} ></Project>
+              return <Project key={index} project={project} handleProjectClick={() => handleProjectClick(project)}></Project>
             }
             })}
         </div>

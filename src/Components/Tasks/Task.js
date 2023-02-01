@@ -1,11 +1,11 @@
 import '../../App.css';
 
-function Task(props) {
+function Task({task}) {
   return (
     <div className='task-main-div'>
       <div className='customRadio'>
         <svg className='checkSvg' fill="#5f5f5f"
-          width="800px" height="800px" viewBox="0 0 78.369 78.369"
+          width="30px" height="30px" viewBox="0 0 78.369 78.369"
           xmlSpace="preserve">
           <g>
           <path d="M78.049,19.015L29.458,67.606c-0.428,0.428-1.121,0.428-1.548,0L0.32,40.015c-0.427-0.426-0.427-1.119,0-1.547l6.704-6.704
@@ -15,7 +15,7 @@ function Task(props) {
         </svg>
       </div>
       <div className='display-flex flex-column'>
-        <span>This is a very long message g This is a very long message gThis is a very long message gThis is a very long message gThis is a very long message g</span>
+        <span>{task.name}</span>
         <span>Jan 7 9:00 AM</span>    
       </div>
      

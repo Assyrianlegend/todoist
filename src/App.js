@@ -1,15 +1,25 @@
 import './App.css';
 import LeftNav from "./Components/Nav/LeftNav";
 import MainView from './Components/MainView';
+import Toast from "./Components/Toast";
 import { createContext,useContext, useEffect, useState } from 'react';
-import ProjectContext from "./Contexts/ProjectsContext";
+import {ProjectsContext} from "./Contexts/ProjectsContext";
+import {TasksContext} from "./Contexts/TasksContext";
+import {ToastsContext} from "./Contexts/ToastContext";
 
 function App() {
   return (
-    <div className="main-container">
-        <LeftNav></LeftNav>
-        <MainView></MainView>
-    </div>
+    <ToastsContext>
+      <ProjectsContext>
+        <TasksContext>
+          <div className="main-container">
+            <LeftNav></LeftNav>
+            <MainView></MainView>
+            <Toast></Toast>
+          </div>
+        </TasksContext>
+      </ProjectsContext>
+    </ToastsContext>
   );
 }
    

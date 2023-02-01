@@ -1,16 +1,23 @@
 import '../App.css';
 import Tasks from "./Tasks/Tasks"
-import ProjectContext from "../Contexts/ProjectsContext";
+import ProjectsContext from "../Contexts/ProjectsContext";
 import { useContext } from 'react';
 
 function MainView() {
-  const selectedProject = useContext(ProjectContext).selectedProject;
-  console.log('main nav');
-  console.log(selectedProject)
+  const selectedProject = useContext(ProjectsContext).selectedProject;
   return (
     <div className='main-div'>
-        <h3>{selectedProject.name}</h3>
-        <Tasks></Tasks>    
+        {selectedProject.name &&
+          <div>
+          <h3>{selectedProject.name}</h3>
+          <Tasks></Tasks>    
+        </div>
+        }
+        {!selectedProject.name &&
+        <div className='display-flex align-items-center justify-content-center h-100'>
+          <span>Add a project to continue!</span>
+        </div>
+        }
     </div>
   );
 }

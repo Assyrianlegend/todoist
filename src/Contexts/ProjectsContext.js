@@ -1,36 +1,23 @@
 import { createContext,useContext, useEffect, useState } from 'react';
-
-class ProjectsContext {
-
-  constructor(){
-    this.projects = [];
-    this.selectedProject = {};
-    this.initiate();
-  }
-  initiate(){
-    let p = [
-        {name: "Project 1", favorite: 1},
-        {name: "Project 2", favorite: 1},
-        {name: "Project 3", favorite: 0},
-        {name: "Project 4", favorite: 0},
-        {name: "Project 5", favorite: 1},
-        {name: "Project 6", favorite: 0},
-
-    ];
-    this.projects = p;
-    this.selectedProject = this.projects[0];
-  }
-
-  addProject(param){
-    this.projects.push(param);
+import React from 'react';
+const PContext = createContext();
+function ProjectsContext({children}) {
+  const [projects, setProjects] = useState([]);
+  const [selectedProject, setSelectedProject] = useState({});
+ 
+  const addProject = (param) => {
+    param.id = Math.floor(Math.random() * 100000);
+    projects.push(param);
+    setProjects(projects);
+    if(projects.length == 1){
+      setSelectedProject(param);
+    }
   }
   
-  setSelectedProject(param){
-
-    this.selectedProject = {...param};
-    console.log(this.selectedProject)
+  const value = {
+    projects,selectedProject,setProjects,setSelectedProject,addProject
   }
+  return <PContext.Provider value={value}>{children}</PContext.Provider>
 }
-const PContext = createContext(new ProjectsContext());
-
+export {ProjectsContext};
 export default PContext;

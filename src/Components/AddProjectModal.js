@@ -5,11 +5,13 @@ import ProjectContext from "../Contexts/ProjectsContext";
 import ColorDot from "../Components/ColorDot";
 function AddProjectModal({closeModal}) {
   const projects = useContext(ProjectContext);
+  const [buttonDisabled, setButtonDisabled] = useState(true);
 
   const colorConstant = {
     Charcoil: "#808080"
   };
 
+  const defaultProject = {name: "", color: colorConstant.Charcoil, favorite: 0};
   const colors = [
     {color: colorConstant.Charcoil, name: "Charcoal"},
     {color: "#b8256f", name: "Berry Rad"},
@@ -25,7 +27,7 @@ function AddProjectModal({closeModal}) {
     {color: "#18aaf5", name: "Light Blue"},
   ];
   const [isOpen, setIsOpen] = useState(false);
-  const [activeProject, setActiveProject] = useState({name: "", color: colorConstant.Charcoil, favorite: 0});
+  const [activeProject, setActiveProject] = useState(defaultProject);
 
   const selectColor = (color) => {
     activeProject.color = color.color;
@@ -33,7 +35,8 @@ function AddProjectModal({closeModal}) {
     setIsOpen(false);
   }
   const setFavorite = () =>  {
-    activeProject.favorite = activeProject.favorite ? 0 : 1;
+    console.log('wtf')
+    activeProject.favorite = activeProject.favorite === 1 ? 0 : 1;
     setActiveProject(activeProject);
     console.log(activeProject);
   }
@@ -41,12 +44,15 @@ function AddProjectModal({closeModal}) {
     e.preventDefault();
     activeProject.name = e.target.value; 
     setActiveProject(activeProject);
+    !activeProject.name.length ?setButtonDisabled(true) : setButtonDisabled(false);
+
   }
 
   function doAddNewProject(){
     closeModal();
     activeProject.id = Math.random(1,10000000);
     projects.addProject(activeProject);
+    setActiveProject(defaultProject);
   }
 
 
@@ -80,14 +86,14 @@ function AddProjectModal({closeModal}) {
         </div>
         <div className='padding-1 display-flex align-items-center'>
           <label onClick={(e) => { e.stopPropagation(); setFavorite()}} className="switch">
-            <input type="checkbox" defaultChecked={activeProject.favorite}></input>
+            <input type="checkbox" defaultChecked={activeProject.favorite}  onClick={(e) => { e.stopPropagation()}}></input>
             <span className="slider round"></span>
           </label>           
           Add to Favorites
         </div>
         <div className='padding-1 modal-footer-div'>
             <button onClick={(e) => { e.stopPropagation(); closeModal()}} className="btn-secondary">Cancel</button>
-            <button className='btn-primary' onClick={(e) => { e.stopPropagation(); doAddNewProject()}}>Add</button>
+            <button className='btn-primary' disabled={buttonDisabled} onClick={(e) => { e.stopPropagation(); doAddNewProject()}}>Add</button>
         </div>
     </div>
   </div>
