@@ -4,14 +4,14 @@
     left: 1rem;
     background-color: #333333;
     box-shadow: 0px 3px 3px 3px #181818;
-    padding: 1rem;
+    padding: .75rem;
     border-radius: 5px;
-    display: flex;
     align-items: center;
     justify-content: space-between;
-    min-width: 220px;
-    
-}
+    gap: 1rem; 
+    display: flex;
+    opacity: 0;
+}   
 .close-icon{
     color: #888888;
     height: 1.75rem;
@@ -20,3 +20,41 @@
     text-decoration: none;
     color: #fb7066;
 }
+.slide-in-animation{
+    animation: slide-up .5s ease-in;
+    opacity: 1;
+}
+.slide-out-animation{
+    animation: slide-out .5s ease-out;
+}
+.fade-out-animation{
+    animation: fade-out .5s ease-out;
+}
+@keyframes slide-up {
+    from {
+        transform: translateY(25%);
+        opacity: 0;
+      }
+      to {
+        transform: translateY(0%);
+        opacity: 1;
+      }
+  }
+  @keyframes slide-out {
+    from {
+        transform: translateY(0%);
+        opacity: 1;
+    }
+    to {
+        transform: translateY(-25%);
+        opacity: 0;
+    }
+  }
+  @keyframes fade-out {
+    from {
+        opacity: 1;
+    }
+    to {
+        opacity: 0;
+    }
+  }

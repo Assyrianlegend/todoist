@@ -8,8 +8,10 @@ function TasksContext({children}) {
   const PContext = useContext(ProjectsContext);
   const ToastCont = useContext(ToastContext);
 
-  const [tasks, setTasks] = useState({});
+  const [tasks, setTasks] = useState({"1": [{name: "Task 1", id: "22"}]});
   const addTask = (task) => {
+    task.id = Math.floor(Math.random() * 100000);
+
     const t  = {...tasks};
     if(!t[PContext.selectedProject.id]){
       t[PContext.selectedProject.id] = []
@@ -18,9 +20,16 @@ function TasksContext({children}) {
     setTasks(t);
     ToastCont.addToast(1, PContext.selectedProject.id);
   }
+  const updateTask = (projectId,taskIndex, task) => {
+    const t  = {...tasks};
+    t[projectId][taskIndex] = {...task};
+    setTasks(t);
+    ToastCont.addToast(2, null)
+  }
   const value = {
     tasks,
-    addTask
+    addTask,
+    updateTask
   }
 
   return <TContext.Provider value={value}>{children}</TContext.Provider>

@@ -4,6 +4,13 @@
 ul {
   list-style-type: none;
 }
+body{
+  background-color: #202020;
+}
+#root{
+  display: flex;
+  justify-content: center;
+}
 button:disabled{
   cursor: not-allowed;
 }
@@ -13,12 +20,15 @@ button:disabled{
   display: flex;
   justify-content: center;
   min-height: 100vh;
+  width: 1200px;
+  position: relative;
 }
 .main-div{
   display: flex;
   flex-direction: column;
   padding: 0 2rem;
   min-width: 700px;
+  flex:1
 }
 .tasks-main-div{
   gap: 1rem;
@@ -59,6 +69,7 @@ button:disabled{
 }
 .svg-gray{
   color: #b8b8b8;
+  fill: #b8b8b8;
   height: 20px;
 }
 .h-100{
@@ -87,6 +98,10 @@ button:disabled{
 }
 .cursor-pointer{
   cursor: pointer;
+}
+
+.display-none{
+  display: none;
 }
 .modal {
   position: fixed;

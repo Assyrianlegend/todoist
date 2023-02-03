@@ -35,10 +35,8 @@ function AddProjectModal({closeModal}) {
     setIsOpen(false);
   }
   const setFavorite = () =>  {
-    console.log('wtf')
     activeProject.favorite = activeProject.favorite === 1 ? 0 : 1;
     setActiveProject(activeProject);
-    console.log(activeProject);
   }
   const setName = (e) => {
     e.preventDefault();
@@ -50,7 +48,6 @@ function AddProjectModal({closeModal}) {
 
   function doAddNewProject(){
     closeModal();
-    activeProject.id = Math.random(1,10000000);
     projects.addProject(activeProject);
     setActiveProject(defaultProject);
   }

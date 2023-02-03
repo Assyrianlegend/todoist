@@ -1,9 +1,19 @@
 import '../../App.css';
+import {useContext } from 'react';
+import TContext from "../../Contexts/TasksContext";
+import PContext from "../../Contexts/ProjectsContext";
 
-function Task({task}) {
+function Task({taskIndex, task}) {
+  const TasksContext = useContext(TContext);
+  const ProjectsContext = useContext(PContext);
+
+  function markTaskCompleted(){
+      task.date_completed = new Date();
+      TasksContext.updateTask(ProjectsContext.selectedProject.id,taskIndex, task)
+  };
   return (
     <div className='task-main-div'>
-      <div className='customRadio'>
+      <div onClick={(e) => { e.stopPropagation(); markTaskCompleted(task)}} className='customRadio'>
         <svg className='checkSvg' fill="#5f5f5f"
           width="30px" height="30px" viewBox="0 0 78.369 78.369"
           xmlSpace="preserve">

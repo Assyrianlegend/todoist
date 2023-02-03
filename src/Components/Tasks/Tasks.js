@@ -12,7 +12,9 @@ function Tasks() {
   return (
     <div >
         {ProjectTasks[PContext.selectedProject.id] && ProjectTasks[PContext.selectedProject.id].map((task, index) => {
-            return <Task key={index} task={task}></Task>
+            if(!task.date_completed){
+              return <Task key={index} task={task} taskIndex={index}></Task>
+            }
          })}
         <AddTask cancel={() => setAddingTaskExpanded(false)}></AddTask>
     </div>
