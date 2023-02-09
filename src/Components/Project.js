@@ -1,13 +1,19 @@
 import '../App.css';
+import {useState,useContext } from 'react';
 import ColorDot from './ColorDot';
-function Project(props) {
+import TContext from "../Contexts/TasksContext";
+function Project({project,handleProjectClick, hideTaskCount= false}) {
+  const TasksContext = useContext(TContext);
+
   return (
-    <div onClick={props.handleProjectClick} className='project-div'>
+    <div onClick={handleProjectClick} className='project-div'>
         <div>
-          <ColorDot color={props.project.color}></ColorDot>
-          <span>{props.project.name}</span>
+          <ColorDot color={project.color}></ColorDot>
+          <span>{project.name}</span>
         </div>
-        <span>14</span>         
+        {(TasksContext.tasks[project.id] && !hideTaskCount) && 
+          <span>{TasksContext.tasks[project.id].filter(task => task.date_completed == null).length}</span>         
+        }
     </div>
   );
 }

@@ -10,8 +10,7 @@ function ProjectsContext({children}) {
   }
   const addProject = (param) => {
     param.id = Math.floor(Math.random() * 100000);
-    projects.push(param);
-    setProjects(projects);
+    setProjects([...projects, {...param}]);
     if(projects.length == 1){
       setSelectedProject(param);
     }

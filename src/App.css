@@ -20,7 +20,8 @@ button:disabled{
   display: flex;
   justify-content: center;
   min-height: 100vh;
-  width: 1200px;
+  width: 100vw;
+  max-width: 1200px;
   position: relative;
 }
 .main-div{
@@ -40,14 +41,33 @@ button:disabled{
   width: 100%;
   padding-bottom: 1rem;
   align-items: center;
+  position: relative;
 }
 .task-main-div > span{
   padding: .25rem;
+}
+.task-main-div:hover .svg-gray{
+  display: inline-block;
+}
+.task-actions{
+  position: absolute;
+  z-index: 1;
+  right: 0;
+  top: 0;
 }
 .left-nav{
   min-width: 300px;
   background-color: #242424;
   padding: 1rem;
+}
+.project-section{
+  max-height: 0;
+  overflow: hidden;
+  transition: max-height 1s ease-out;
+}
+.project-section-collapsed{
+  max-height: 100%;
+  transition: max-height 1s ease-in;
 }
 .projects-parent-div{
   font-size: 16px;
@@ -71,6 +91,17 @@ button:disabled{
   color: #b8b8b8;
   fill: #b8b8b8;
   height: 20px;
+}
+.left-nav:hover .svg-gray{
+  display: inline-block ;
+}
+.arrow-collapsed{
+  transform: rotate(90deg);
+  transition: transform .25s ease-in-out;
+}
+.arrow{
+  transform: rotate(0deg);
+  transition: transform .25s ease-in-out;
 }
 .h-100{
   min-height: 100%;

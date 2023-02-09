@@ -1,0 +1,64 @@
+.dropdown {
+    display: inline-block;
+    position: relative;
+  }
+.select-project-button{
+    position: relative;
+}
+
+.dd-input {
+    display: none;
+  }
+.dd-menu {
+ position: absolute;
+    top: 100%;
+    border-radius: 4px;
+    padding: 0;
+    margin: 2px 0 0 0;
+    box-shadow: 0 0 6px 0 rgba(0,0,0,0.1);
+    background-color: #282828;
+    list-style-type: none;
+}
+  
+.dd-input + .dd-menu {
+   display: none;
+} 
+  
+.dd-input:checked + .dd-menu {
+    display: block;
+} 
+  
+.dd-menu li {
+    padding: 10px 20px;
+    cursor: pointer;
+    white-space: nowrap;
+ }
+  
+.dd-menu li:hover {
+    background-color: #363636;
+}
+  
+.dd-menu li a {
+    display: block;
+    margin: -10px -20px;
+    padding: 10px 20px;
+}
+  
+.dd-menu li.divider{
+    padding: 0;
+    border-bottom: 1px solid #cccccc;
+}
+.search-input{
+    width: 100%;
+    padding: .5rem;
+    background-color: #282828;
+    border-top: none;
+    border-left: none;
+    border-right: none;
+    border-bottom: 1px solid #2f2f2f;
+    border-radius: 5px;
+    color: white;
+}
+.search-input::placeholder{
+    color:#6c6c6c;
+}

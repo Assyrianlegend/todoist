@@ -17,9 +17,16 @@
 .addingTaskExpandedMain{
   border: 1px solid #9d9d9d;
   padding: 1rem;
-  border-radius: 5px;
+  border-top-left-radius: 5px;
+  border-top-right-radius: 5px;
   background-color : #1f1f1f; 
 
+}
+.bottom-task-controls{
+  border: 1px solid #9d9d9d;
+  border-bottom-left-radius: 5px;
+  border-bottom-right-radius: 5px;
+  border-top: none;
 }
 .add-task-input{
   width: 100%;
@@ -30,4 +37,28 @@
   color: white;
   font-size: 1rem;
   margin: .25rem 0;
+}
+.select-project-button{
+  background-color: #202020;
+  border: none;
+  color:#959595;
+  font-size: 15px;
+  display: flex;
+  align-items: center;
+}
+.select-project-button:hover{
+  background-color: #242424;
+  color:white;
+}
+.select-project-button .colorDot{
+  margin: 0 .5rem;
+}
+.select-project-button svg{
+  color:#959595;
+  fill:#959595;
+  margin: 0 .25rem
+}
+.select-project-button:hover svg{
+  color:white;
+  fill: white;
 }
