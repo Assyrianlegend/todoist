@@ -13,6 +13,7 @@ function AddEditTask({activeTaskIndex,resetIndex}) {
     const [buttonDisabled, setButtonDisabled] = useState(true);
     const [addingTaskExpanded, setAddingTaskExpanded] = useState(false);
     const [selectedProject, setSelectedProject] = useState({});
+    
     //if we are editing a task, setIt
     useEffect(() => {
         if(activeTaskIndex !== null){
@@ -40,7 +41,6 @@ function AddEditTask({activeTaskIndex,resetIndex}) {
         setButtonDisabled(true);
         resetIndex();
     }
-
     return (
         <div className='margin-y'>
             {!addingTaskExpanded &&
@@ -59,7 +59,7 @@ function AddEditTask({activeTaskIndex,resetIndex}) {
                     </div>
                 </div>
                 <div className='display-flex justify-space-between padding-1 bottom-task-controls'>
-                    <ProjectSelect></ProjectSelect>
+                    {selectedProject && <ProjectSelect selectedProject={selectedProject} setTaskProject={(project) => setSelectedProject(project)}></ProjectSelect>}
                     <div>
                         <button onClick={(e) => {e.stopPropagation(); setAddingTaskExpanded(false);resetIndex()}} className="btn-secondary">Cancel</button>
                         <button className='btn-primary margin-sm-x' disabled={buttonDisabled} onClick={(e) => {e.preventDefault(); addEditNewTask()}}>{!task.id ? "Add" : "Save"}</button>

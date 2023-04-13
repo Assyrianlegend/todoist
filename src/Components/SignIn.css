@@ -1,0 +1,28 @@
+.signup-input {
+    border: none !important;
+    background-color: transparent !important;
+
+  }
+.signup-input::placeholder {
+    font-size: 16px;
+  }
+.input-group{
+    border: 1px solid #2b2b2b;
+    border-radius: 5px;
+    padding: .5rem;
+  }
+  .login-div{
+    width: 50%;
+    max-width: 500px;
+    margin: auto;
+  }
+  button{
+    padding: .75rem !important;
+  }
+  a{
+    text-decoration: none;
+  }
+  .sign-up-text{
+    font-size: 12px;
+    text-align: center;
+  }

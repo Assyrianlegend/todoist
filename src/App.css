@@ -106,6 +106,10 @@ button:disabled{
 .h-100{
   min-height: 100%;
 }
+.h-100-vw{
+    min-height: 100vh;
+
+}
 .display-flex{
   display: flex;
 }
@@ -228,6 +232,9 @@ button:disabled{
 
 .dropdown:hover .dropdown-content {
   display: block;
+}
+.text-color-light{
+  color: white;
 }
 .colorDot{
   width: 10px;

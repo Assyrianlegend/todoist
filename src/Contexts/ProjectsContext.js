@@ -1,5 +1,7 @@
 import { createContext,useContext, useEffect, useState } from 'react';
 import React from 'react';
+import { createProject } from '../Api/Projects';
+
 const PContext = createContext();
 function ProjectsContext({children}) {
   const [projects, setProjects] = useState([{id: 1, name: "Project 1"}]);
@@ -8,8 +10,8 @@ function ProjectsContext({children}) {
   if(!selectedProject.id && projects.length){
     setSelectedProject(projects[0])
   }
-  const addProject = (param) => {
-    param.id = Math.floor(Math.random() * 100000);
+  const addProject = async (param) => {
+    let project = await createProject();
     setProjects([...projects, {...param}]);
     if(projects.length == 1){
       setSelectedProject(param);
